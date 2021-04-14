@@ -27,9 +27,9 @@ if ($Check) {
 }
 
 Try{
-    Get-DistributionGroup -Identity $DL | Select-Object DisplayName,EmailAddresses,ManagedBy | Export-Csv -Path "\\dhw.wa.gov.au\corporatedata\is\tss\Support Centre\EntOps\Scripts\Exports\$RITM-$DL-$Date.csv" -NoTypeInformation
+    Get-DistributionGroup -Identity $DL | Select-Object DisplayName,EmailAddresses,ManagedBy | Export-Csv -Path "#Path of the Info export#\$RITM-$DL-$Date.csv" -NoTypeInformation
     $Member = Get-DistributionGroupMember -Identity $DL -ResultSize Unlimited | Select-Object Name,PrimarySMTPAddress
-    Add-Content -Path "\\dhw.wa.gov.au\corporatedata\is\tss\Support Centre\EntOps\Scripts\Exports\$RITM-$DL-$Date.csv" -Value $Member
+    Add-Content -Path "#Path of the Info export#\$RITM-$DL-$Date.csv" -Value $Member
     Remove-DistributionGroup -Identity $DL
     Write-Host "$DL has been deleted from Exchange Online" 
 } Catch {
